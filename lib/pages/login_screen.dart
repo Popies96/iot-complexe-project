@@ -92,6 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Padding(
                         padding: const EdgeInsets.only(left: 16.0),
                         child: Text(
+                          
                           'Email',
                           style: ralewayStyle.copyWith(
                             fontSize: 12.0,
@@ -109,6 +110,20 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: AppColors.whiteColor,
                         ),
                         child: TextFormField(
+                          validator: (value) {
+                             if (value == null || value.isEmpty) {
+                              return 'Please enter some text';
+                            }
+
+                            bool emailValid = RegExp(
+                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                .hasMatch(value);
+                            if (!emailValid) {
+                              return 'Please enter a valid email';
+                            }
+
+                            return null;
+                          },
                           style: ralewayStyle.copyWith(
                             fontWeight: FontWeight.w400,
                             color: AppColors.blueDarkColor,
