@@ -1,8 +1,15 @@
+import 'dart:io';
+
+import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
 import 'package:iot_project/pages/login_screen.dart';
 import 'package:iot_project/pages/home_screen.dart';
-
-void main() {
+import 'dart:ui';
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isLinux || Platform.isMacOS || Platform.isWindows){
+  await DesktopWindow.setMinWindowSize(const Size(900,800));
+  }
   runApp(const MyApp());
 }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iot_project/pages/dashBoard_screen.dart';
 
 class NavigationRailPage extends StatefulWidget {
   const NavigationRailPage({Key? key}) : super(key: key);
@@ -6,7 +7,9 @@ class NavigationRailPage extends StatefulWidget {
   @override
   State<NavigationRailPage> createState() => _NavigationRailPageState();
 }
-
+  final List<Widget> _screens = [
+    HomePage(),
+    ];
 const _navBarItems = [
   BottomNavigationBarItem(
     icon: Icon(Icons.home_outlined),
@@ -45,16 +48,6 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
     final bool isLargeScreen = width > 800;
 
     return Scaffold(
-      bottomNavigationBar: isSmallScreen
-          ? BottomNavigationBar(
-              items: _navBarItems,
-              currentIndex: _selectedIndex,
-              onTap: (int index) {
-                setState(() {
-                  _selectedIndex = index;
-                });
-              })
-          : null,
       body: Row(
         children: <Widget>[
           if (!isSmallScreen)
@@ -62,7 +55,7 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
               leading: Column(
                 children: [
                   SizedBox(
-                    height:8,),
+                    height:16),
                   Container(
                     margin: EdgeInsets.only(bottom: 10),
                     child: CircleAvatar(
@@ -71,6 +64,7 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
                         Icons.person),
                         ),
                   ),
+                  SizedBox(height: 16,)
                 ],
               ),
               selectedIndex: _selectedIndex,
@@ -80,6 +74,7 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
                 });
               },
               extended: isLargeScreen,
+              minExtendedWidth: 200,
               destinations: _navBarItems
                   .map((item) => NavigationRailDestination(
                       icon: item.icon,
@@ -91,10 +86,8 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
             ),
           const VerticalDivider(thickness: 1, width: 1),
           // This is the main content.
-          Expanded(
-            child: Center(
-              child: Text("${_navBarItems[_selectedIndex].label} Page"),
-            ),
+          Expanded( 
+            child: _screens[_selectedIndex],
           )
         ],
       ),
