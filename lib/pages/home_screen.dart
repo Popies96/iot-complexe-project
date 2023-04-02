@@ -87,6 +87,7 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
           const VerticalDivider(thickness: 1, width: 1),
           // This is the main content.
           Expanded( 
+            flex: 5,
             child: _screens[_selectedIndex],
           )
         ],

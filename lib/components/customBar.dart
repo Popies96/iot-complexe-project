@@ -9,15 +9,12 @@ class customBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 16),
-          child: SizedBox(child: Text('Dashboard',
-          style: TextStyle(color: Colors.black.withOpacity(0.8),
-          fontWeight: FontWeight.bold,
-          fontSize: 30),
-          
-          ),),
-        ),
+        SizedBox(child: Text('Dashboard',
+        style: TextStyle(color: Colors.black.withOpacity(0.8),
+        fontWeight: FontWeight.bold,
+        fontSize: 30),
+        
+        ),),
         SizedBox(width:200),
         Expanded(
             child: TextField(

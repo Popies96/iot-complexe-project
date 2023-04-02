@@ -7,16 +7,28 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
-        child:Column(
-          children: [
-            customBar(),
-            SizedBox(height:16,),
-            Analytic_cards()
-            
-
-        ],) ),
+      child: Container(
+        padding: EdgeInsets.all(8.0),
+        child:ListView(
+          scrollDirection: Axis.vertical,
+          children:[ Column(
+            children: [
+              customBar(),
+              SizedBox(height:16,),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 5,
+                    child: Analytic_cards()),
+                    Expanded(
+                      flex: 2,
+                      child:Container())
+                ],
+              )
+              
+        
+          ],),]
+        ) ),
       
     );
   }
