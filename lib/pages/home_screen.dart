@@ -34,7 +34,7 @@ const _navBarItems = [
   BottomNavigationBarItem(
     icon: Icon(Icons.settings),
     activeIcon: Icon(Icons.settings),
-    label: 'settings',
+    label: 'Settings',
   ),
 ];
 

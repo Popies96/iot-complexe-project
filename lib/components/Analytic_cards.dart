@@ -24,7 +24,7 @@ class AnalyticInfoGrid extends StatelessWidget {
         crossAxisCount: 4,
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,
-        childAspectRatio: 1.9
+        childAspectRatio: 2.5,
       ),
      itemBuilder:(context, index) => AnalyticInfoCard(info: analyticData[index],),);
   }

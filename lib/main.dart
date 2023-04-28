@@ -8,7 +8,7 @@ import 'dart:ui' as ui ;
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isLinux || Platform.isMacOS || Platform.isWindows){
-  await DesktopWindow.setMinWindowSize(const Size(900,800));
+  await DesktopWindow.setMinWindowSize(const Size(800,900));
   }
   runApp(const MyApp());
 }
@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
+        
         primarySwatch: Colors.blue,
       ),
       home: const NavigationRailPage(),

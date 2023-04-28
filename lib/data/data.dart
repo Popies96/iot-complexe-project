@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:iot_project/Models/Analytic_info_model.dart';
 List analyticData = [
   AnalyticInfo(
-    title: "Electricity",
+    title: "Power consumption",
     count: '300 Kw',
     color: Colors.purple,
   ),
   AnalyticInfo(
-    title: "Nat .Gas",
+    title: "Gas consumption",
     count: '9m',
     color: Colors.green,
   ),
   AnalyticInfo(
-    title: "Heating",
-    count: '15Gcal',
+    title: "Temperature",
+    count: '15°C',
     color: Colors.pink,
   ),
   AnalyticInfo(
-    title: "water",
+    title: "Water consumption",
     count: '17 m',
     color: Colors.blue,
   ),

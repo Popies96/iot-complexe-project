@@ -8,7 +8,7 @@ final AnalyticInfo info ;
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 16,
-        vertical: 8,
+        vertical: 10,
       ),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -22,8 +22,8 @@ final AnalyticInfo info ;
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('${info.title}',style: TextStyle(color: Colors.black54,
-              fontWeight: FontWeight.w700,
-              fontSize: 18),),
+              fontWeight: FontWeight.w500,
+              fontSize: 15),),
               Container(
                 padding: EdgeInsets.all(8),
                 height: 48,

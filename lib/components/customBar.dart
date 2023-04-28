@@ -10,7 +10,7 @@ class customBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(child: Text('Dashboard',
-        style: TextStyle(color: Colors.black.withOpacity(0.8),
+        style: TextStyle(color: Colors.black.withOpacity(0.6),
         fontWeight: FontWeight.bold,
         fontSize: 30),
         
