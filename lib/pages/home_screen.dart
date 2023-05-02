@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iot_project/pages/dashBoard_screen.dart';
 
+import 'devices_pages.dart';
+
 class NavigationRailPage extends StatefulWidget {
   const NavigationRailPage({Key? key}) : super(key: key);
 
@@ -9,6 +11,7 @@ class NavigationRailPage extends StatefulWidget {
 }
   final List<Widget> _screens = [
     HomePage(),
+    devicesPage(),
     ];
 const _navBarItems = [
   BottomNavigationBarItem(
