@@ -22,7 +22,7 @@ class barchartCard extends StatelessWidget {
           fontWeight: FontWeight.w700,
           color: Colors.black.withOpacity(0.7),
         ),),
-        Expanded(child: barchartRessources()),
+        Expanded(child: BarChartSample2()),
       ],),
       
     );

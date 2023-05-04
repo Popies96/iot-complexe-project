@@ -24,11 +24,7 @@ const _navBarItems = [
     activeIcon: Icon(Icons.devices_rounded),
     label: 'Devices',
   ),
-  BottomNavigationBarItem(
-    icon: Icon(Icons.person_outline_rounded),
-    activeIcon: Icon(Icons.person_rounded),
-    label: 'Profile',
-  ),
+ 
    BottomNavigationBarItem(
     icon: Icon(Icons.security_outlined),
     activeIcon: Icon(Icons.security_rounded),
@@ -39,6 +35,10 @@ const _navBarItems = [
     activeIcon: Icon(Icons.settings),
     label: 'Settings',
   ),
+  BottomNavigationBarItem(icon: Icon(Icons.logout_outlined),
+  activeIcon: Icon(Icons.logout_rounded),
+  label: 'Log out'
+  )
 ];
 
 class _NavigationRailPageState extends State<NavigationRailPage> {
@@ -58,14 +58,11 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
               leading: Column(
                 children: [
                   SizedBox(
-                    height:16),
+                    height:25),
                   Container(
                     margin: EdgeInsets.only(bottom: 10),
-                    child: CircleAvatar(
-                      radius: 20,
-                      child: Icon(
-                        Icons.person),
-                        ),
+                    width: 50,
+                    child: Center(child: Image.asset('assets/images/smart-house.png', scale: 10,))
                   ),
                   SizedBox(height: 16,)
                 ],

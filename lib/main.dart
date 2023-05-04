@@ -8,7 +8,7 @@ import 'dart:ui' as ui ;
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isLinux || Platform.isMacOS || Platform.isWindows){
-  await DesktopWindow.setMinWindowSize(const Size(800,900));
+  await DesktopWindow.setMinWindowSize(const Size(1500,1500));
   }
   runApp(const MyApp());
 }
