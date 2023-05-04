@@ -53,11 +53,11 @@ class WeatherCard extends StatelessWidget {
                   fontSize: 15,
                 ),
               ),
-              Image.network(
+              /*Image.network(
                 'https:${data.icon}',
                 fit: BoxFit.fill,
                 width: 90,
-              ),
+              ),*/
               Text(
                 '${data?.condition}',
                 style: TextStyle(

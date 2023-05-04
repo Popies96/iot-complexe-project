@@ -3,7 +3,7 @@ import 'package:iot_project/pages/app_colors.dart';
 import 'package:iot_project/pages/app_icons.dart';
 import 'package:iot_project/pages/app_styles.dart';
 import 'package:iot_project/pages/responsive_widget.dart';
-
+import 'package:iot_project/user.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -12,6 +12,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  
+  User user = User('','');
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
