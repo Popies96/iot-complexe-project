@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:iot_project/data/weather_data.dart';
 
-import '../data/get_location_of_device.dart';
+
 
 var dayInfo = DateTime.now();
 var dayFormat = DateFormat('EEEE , d MMM, yyyy').format(dayInfo);
@@ -53,11 +53,13 @@ class WeatherCard extends StatelessWidget {
                   fontSize: 15,
                 ),
               ),
-              /*Image.network(
-                'https:${data.icon}',
-                fit: BoxFit.fill,
-                width: 90,
-              ),*/
+              SizedBox(height: 10,),
+              // /*Image.network(
+              //   'https:${data?.icon}',
+              //   fit: BoxFit.fill,
+              //   width: 90,
+              // ),*/
+              
               Text(
                 '${data?.condition}',
                 style: TextStyle(
