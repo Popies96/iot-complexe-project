@@ -2,6 +2,14 @@ const express = require ('express');
 const User = require ('../models/user.model');
 const router = express.Router();
 const UserController = require('../controller/user.controller');
+
+
+router.post('/signin',UserController.login);
+module.exports = router
+
+
+
+
 /*
 router.post('/signup',(req,res)=>{
     User.findOne({username:req.body.username}).then((err,user)=>{
@@ -40,7 +48,3 @@ router.get('/',(req,res)=> {
     console.log('YEET')
 })
 */
-
-router.post('/signin',UserController.login);
-
-module.exports = router

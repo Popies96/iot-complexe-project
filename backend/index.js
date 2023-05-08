@@ -6,11 +6,15 @@ const bodyParser = require('body-parser')
 const db = require('./configuration/db')
 const mongoose = require('mongoose')
 mongoose.connect("mongodb://localhost:27017/mydb",{ useNewUrlParser: true , useUnifiedTopology: true})
+mongoose.Promise = global.Promise;
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 app.use('/',require('./routes/user.route'))
+app.use('dht11' , require('./routes/dht11.route'));
 app.listen(port,()=> {
     console.log("port running on" + port) ;
 })
+
+module.exports = app.router;

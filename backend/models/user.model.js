@@ -7,7 +7,10 @@ const newschema = new Schema({
     username:String,
     password:String,
 })
-
+const DHT11 = new Schema({
+    Temp:Number,
+    Hum:Number,
+})
 newschema.methods.comparePassword = async function(password) {
     try{
       /*  const isMatch = await bcrypt.compare(password,this.password);
