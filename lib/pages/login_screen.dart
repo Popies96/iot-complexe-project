@@ -1,19 +1,70 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:iot_project/pages/app_colors.dart';
 import 'package:iot_project/pages/app_icons.dart';
 import 'package:iot_project/pages/app_styles.dart';
 import 'package:iot_project/pages/responsive_widget.dart';
+import 'package:iot_project/pages/home_screen.dart';
 import 'package:iot_project/user.dart';
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+import 'package:iot_project/pages/validator.dart';
+import 'package:http/http.dart' as http;
+import 'package:iot_project/pages/config.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+class LoginScreen extends StatefulWidget {
+  
+   const LoginScreen({Key? key}) : super(key: key);
+  
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   
+  bool _showPassword = false;
+
+  
+
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   User user = User('','');
+  late SharedPreferences prefs;
+
+  @override
+  void initState() {
+    super.initState();
+    initSharedpref();
+  }
+
+  void initSharedpref() async {
+    prefs = await SharedPreferences.getInstance();
+  }
+
+  void loginUser() async {
+  if (usernameController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+    var regBody = {
+      "username":usernameController.text,
+      "password": passwordController.text
+    };
+    var response = await http.post(Uri.parse(signIn),
+        headers : {"Content-Type" : "application/json"},
+        body : jsonEncode(regBody)
+    );
+    var jsonResponse = jsonDecode(response.body);
+    if(jsonResponse['status']) {
+      var myToken = jsonResponse['token'];
+      prefs.setString(('token'), myToken);
+      Navigator.push(context , MaterialPageRoute(builder: (Context) =>NavigationRailPage(token : myToken)));
+    }else {
+      print('something went wrong');
+    }
+  }
+  
+
+}
+
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -90,12 +141,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: AppColors.textColor,
                         ),
                       ),
-                      SizedBox(height: height * 0.064),
+                      /*SizedBox(height: height * 0.064),
                       Padding(
                         padding: const EdgeInsets.only(left: 16.0),
                         child: Text(
                           
-                          'Email',
+                          'Username',
                           style: ralewayStyle.copyWith(
                             fontSize: 12.0,
                             color: AppColors.blueDarkColor,
@@ -112,26 +163,32 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: AppColors.whiteColor,
                         ),
                         child: TextFormField(
+                          controller: TextEditingController(text:user.username),
+                          onChanged: (value){
+                            user.username = value;
+                          },
                           validator: (value) {
                              if (value == null || value.isEmpty) {
                               return 'Please enter some text';
                             }
 
-                            bool emailValid = RegExp(
-                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            bool usernameValid = RegExp(
+                                    r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+')
                                 .hasMatch(value);
-                            if (!emailValid) {
+                            if (!usernameValid) {
                               return 'Please enter a valid email';
                             }
 
                             return null;
                           },
+                          
                           style: ralewayStyle.copyWith(
                             fontWeight: FontWeight.w400,
                             color: AppColors.blueDarkColor,
                             fontSize: 12.0,
                           ),
                           decoration: InputDecoration(
+                            errorBorder: const OutlineInputBorder(borderSide:BorderSide(color: Colors.red) ),
                             border: InputBorder.none,
                             prefixIcon: IconButton(
                               onPressed: (){},
@@ -145,20 +202,89 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: height * 0.014),
+                      ),*/
+                      SizedBox(height: height * 0.04),
                       Padding(
                         padding: const EdgeInsets.only(left: 16.0),
                         child: Text(
-                          'Password',
+                          
+                          'Username',
                           style: ralewayStyle.copyWith(
-                            fontSize: 12.0,
+                            fontSize: 15.0,
                             color: AppColors.blueDarkColor,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
                       ),
-                      const SizedBox(height: 6.0),
+                      SizedBox(height: height * 0.025),
+                              TextFormField(
+                                controller: usernameController,
+                                
+                                  onChanged: (value){
+                            user.username = value;
+                          },
+                         
+                             validator: (value) {
+                                  return Validator.validateName(value ?? "");
+                                },
+                                
+                                decoration: InputDecoration(
+                                  //errorText: _isNotValidate ? "enter Proper Info": null,
+                                  errorBorder:  OutlineInputBorder(
+                                    borderSide:const BorderSide(color: Colors.red),
+                                    borderRadius: BorderRadius.circular(16),
+                                     ),
+                                     focusedErrorBorder:  OutlineInputBorder(
+                                    borderSide:const BorderSide(color: Colors.red),
+                                    borderRadius: BorderRadius.circular(16),
+                                     ),
+                                  
+                                  prefixIcon: IconButton(
+                                    padding: const EdgeInsets.only(left : 20, right : 20),
+                              onPressed: (){},
+                              hoverColor: AppColors.backColor,
+                              splashColor: AppColors.backColor,
+                              icon: Image.asset(AppIcons.emailIcon),),
+
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                  hintText: "Username",
+                                  hintStyle: const TextStyle(
+                                      color: Color(0xFFB9B9B9),
+                                      fontFamily: "Jost",
+                                      fontSize: 15.5),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide:
+                                        const BorderSide(color: Colors.white),
+                                    borderRadius: BorderRadius.circular(18),
+                                  ),
+                                  contentPadding: const EdgeInsets.only(
+                                      left: 30.0, bottom: 15, top: 15),
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        const BorderSide(color: Colors.white),
+                                    borderRadius: BorderRadius.circular(18),
+                                  ),
+                                  //ERRRORRRR
+                                  isDense: true,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                              ),
+                      SizedBox(height: height * 0.05),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16.0),
+                        child: Text(
+                          'Password',
+                          style: ralewayStyle.copyWith(
+                            fontSize: 15.0,
+                            color: AppColors.blueDarkColor,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                     /* const SizedBox(height: 6.0),
                       Container(
                         height: 50.0,
                         width: width,
@@ -192,7 +318,79 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
-                      ),
+                      ),*/
+                      SizedBox(height: height * 0.025),
+                              TextFormField(
+                                obscureText: !_showPassword,
+                                controller: passwordController,
+                                validator: (value) {
+                                  return Validator.validatePassword(
+                                      value ?? "");
+                                },
+                                
+                                decoration: InputDecoration(
+                                  errorBorder:  OutlineInputBorder(
+                                    borderSide:const BorderSide(color: Colors.red),
+                                    borderRadius: BorderRadius.circular(16),
+                                     ),
+                                     focusedErrorBorder:  OutlineInputBorder(
+                                    borderSide:const BorderSide(color: Colors.red),
+                                    borderRadius: BorderRadius.circular(16),
+                                     ),
+                                    prefixIcon: IconButton(
+                                    padding: const EdgeInsets.only(left : 20, right : 20),
+                                    hoverColor: AppColors.backColor,
+                                    splashColor: AppColors.backColor,
+                                    
+                              onPressed: () {},
+                              icon: Image.asset(AppIcons.lockIcon),
+                            ),
+                                  suffixIcon: GestureDetector(
+                                    onTap: () {
+                                      setState(
+                                          () => _showPassword = !_showPassword);
+                                    },
+                                    child: Icon(
+                                      _showPassword
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  hintText: "Password",
+                                  fillColor: Colors.white,
+                                  filled: true,
+
+                                  hintStyle: const TextStyle(
+                                      color: Color(0xFFB9B9B9),
+                                      fontFamily: "Jost",
+                                      fontSize: 15.5),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide:
+                                        const BorderSide(color: Colors.white),
+                                    borderRadius: BorderRadius.circular(18),
+                                  ),
+                                  contentPadding: const EdgeInsets.only(
+                                      left: 30.0, bottom: 15, top: 15),
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        const BorderSide(color: Colors.white),
+                                    borderRadius: BorderRadius.circular(18),
+                                  ),
+                                  //ERRRORRRR
+                                  isDense: true,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                              ),
+
+
+
+
+
+
+                      ////////////////////////////////////////////
                       SizedBox(height: height * 0.03),
                       Align(
                         alignment: Alignment.centerRight,
@@ -209,29 +407,33 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(height: height * 0.05),
-                      Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () {},
-                          borderRadius: BorderRadius.circular(16.0),
-                          child: Ink(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 70.0, vertical: 18.0),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16.0),
-                              color: AppColors.mainBlueColor,
-                            ),
-                            child: Text(
-                              'Sign In',
-                              style: ralewayStyle.copyWith(
-                                fontWeight: FontWeight.w700,
-                                color: AppColors.whiteColor,
-                                fontSize: 16.0,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Center(
+                                    child: ElevatedButton(
+                                      onPressed:(){
+                                        loginUser();
+
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: AppColors.mainBlueColor,
+                                        shape: const StadiumBorder(),
+                                        minimumSize: const Size(200, 60),
+                                        elevation: 0,
+                                      ),
+                                      child: Text(
+                                       'Sign In',
+                                       style: ralewayStyle.copyWith(
+                                       fontWeight: FontWeight.w700,
+                                       color: AppColors.whiteColor,
+                                       fontSize: 16.0,
+                                      ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ),
-                        ),
-                      ),
                     ],
                   ),
                 ),

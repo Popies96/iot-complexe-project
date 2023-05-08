@@ -1,7 +1,8 @@
-const express = require ('express')
-const User = require ('../models/user.model')
-const router = express.Router()
-
+const express = require ('express');
+const User = require ('../models/user.model');
+const router = express.Router();
+const UserController = require('../controller/user.controller');
+/*
 router.post('/signup',(req,res)=>{
     User.findOne({username:req.body.username}).then((err,user)=>{
         if(err){
@@ -35,23 +36,11 @@ router.post('/signup',(req,res)=>{
     
 })
 
-/*router.get('/',(req,res)=> {
+router.get('/',(req,res)=> {
     console.log('YEET')
-})*/
-
-router.post('/signin',(req,res)=>{
-   User.findOne({ username:req.body.username,password:req.body.password}).then((err,user)=>{
-    
-    if (err) {
-        console.log(err)
-        res.json(err)
-    }
-    else{
-        
-        res.json(user)            
-    }
-   })
-    
 })
+*/
+
+router.post('/signin',UserController.login);
 
 module.exports = router

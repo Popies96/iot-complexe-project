@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:iot_project/pages/dashBoard_screen.dart';
-
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'devices_pages.dart';
 
 class NavigationRailPage extends StatefulWidget {
-  const NavigationRailPage({Key? key}) : super(key: key);
-
+ final token;
+  const NavigationRailPage({@required this.token,Key? key}) : super(key: key);
+  
   @override
   State<NavigationRailPage> createState() => _NavigationRailPageState();
 }
   final List<Widget> _screens = [
-    HomePage(),
-    devicesPage(),
+    const HomePage(),
+    const devicesPage(),
     ];
 const _navBarItems = [
   BottomNavigationBarItem(
@@ -43,7 +44,18 @@ const _navBarItems = [
 
 class _NavigationRailPageState extends State<NavigationRailPage> {
   int _selectedIndex = 0;
+  
+  late String username;
 
+  @override 
+  void initState() {
+    super.initState();
+    Map<String,dynamic> jwtDecodedToken = JwtDecoder.decode(widget.token);
+
+    username = jwtDecodedToken['username'];
+  }
+  
+  
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -59,6 +71,7 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
                 children: [
                   SizedBox(
                     height:16),
+                    Text(username),
                   Container(
                     margin: EdgeInsets.only(bottom: 10),
                     child: CircleAvatar(

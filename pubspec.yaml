@@ -45,6 +45,9 @@ dependencies:
   sleek_circular_slider: ^2.0.1
   percent_indicator: ^4.2.3
   intl: ^0.18.1
+  shared_preferences: ^2.1.0
+  dart_jsonwebtoken: ^2.7.1
+  jwt_decoder: ^2.0.1
 percent_indicator: ^4.2.3
 
 dev_dependencies:
