@@ -162,11 +162,11 @@ class BarChartSample2State extends State<BarChartSample2> {
     );
     String text;
     if (value == 0) {
-      text = '1K';
+      text = '1';
     } else if (value == 10) {
-      text = '5K';
+      text = '5';
     } else if (value == 19) {
-      text = '10K';
+      text = '10';
     } else {
       return Container();
     }
@@ -178,7 +178,7 @@ class BarChartSample2State extends State<BarChartSample2> {
   }
 
   Widget bottomTitles(double value, TitleMeta meta) {
-    final titles = <String>['Mn', 'Te', 'Wd', 'Tu', 'Fr', 'St', 'Su'];
+    final titles = <String>['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July'];
 
     final Widget text = Text(
       titles[value.toInt()],

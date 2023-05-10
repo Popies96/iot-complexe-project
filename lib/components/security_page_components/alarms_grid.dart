@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+
+import 'building_security_items.dart';
+
+class SecurityGridView extends StatelessWidget {
+  final List<Map<String, dynamic>> securityItems = [
+    {
+      "title": "Fire Alarm",
+      "imagePlaceholder": "assets/images/fire-sensor.png",
+      "isSafe": false,
+    },
+    {
+      "title": "Motion detection",
+      "imagePlaceholder": "assets/images/sensor.png",
+      "isSafe": true,
+    },
+    {
+      "title": "Smart locks",
+      "imagePlaceholder": "assets/images/lock.png",
+      "isSafe": false,
+    },
+    {
+      "title": "Emergency Call",
+      "imagePlaceholder": "assets/images/ambulance.png",
+      "isSafe": true,
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      padding: EdgeInsets.all(10),
+      itemCount: securityItems.length,
+      physics: NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, childAspectRatio: 3,crossAxisSpacing: 16,mainAxisSpacing: 16),
+      itemBuilder: (BuildContext context, int index) {
+        return SecurityItem(
+          title: securityItems[index]["title"],
+          imagePlaceholder: securityItems[index]["imagePlaceholder"],
+          isSafe: securityItems[index]["isSafe"],
+        );
+      },
+    );
+  }
+}

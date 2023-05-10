@@ -45,7 +45,11 @@ dependencies:
   sleek_circular_slider: ^2.0.1
   percent_indicator: ^4.2.3
   intl: ^0.18.1
+  video_player: ^2.6.1
+  flutter_vlc_player: ^7.2.0
+  better_player: ^0.0.63
 percent_indicator: ^4.2.3
+  
 
 dev_dependencies:
   flutter_test:
