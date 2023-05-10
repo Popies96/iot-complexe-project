@@ -12,12 +12,12 @@ class SecurityGridView extends StatelessWidget {
     {
       "title": "Motion detection",
       "imagePlaceholder": "assets/images/sensor.png",
-      "isSafe": true,
+      "isSafe": false,
     },
     {
       "title": "Smart locks",
       "imagePlaceholder": "assets/images/lock.png",
-      "isSafe": false,
+      "isSafe": true,
     },
     {
       "title": "Emergency Call",
