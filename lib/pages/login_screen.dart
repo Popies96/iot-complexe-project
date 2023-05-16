@@ -128,68 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       SizedBox(height: height * 0.06),
                     
-                      /*SizedBox(height: height * 0.064),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 16.0),
-                        child: Text(
-                          
-                          'Username',
-                          style: ralewayStyle.copyWith(
-                            fontSize: 12.0,
-                            color: AppColors.blueDarkColor,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 6.0),
-                      Container(
-                        height: 50.0,
-                        width: width,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16.0),
-                          color: AppColors.whiteColor,
-                        ),
-                        child: TextFormField(
-                          controller: TextEditingController(text:user.username),
-                          onChanged: (value){
-                            user.username = value;
-                          },
-                          validator: (value) {
-                             if (value == null || value.isEmpty) {
-                              return 'Please enter some text';
-                            }
 
-                            bool usernameValid = RegExp(
-                                    r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+')
-                                .hasMatch(value);
-                            if (!usernameValid) {
-                              return 'Please enter a valid email';
-                            }
-
-                            return null;
-                          },
-                          
-                          style: ralewayStyle.copyWith(
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.blueDarkColor,
-                            fontSize: 12.0,
-                          ),
-                          decoration: InputDecoration(
-                            errorBorder: const OutlineInputBorder(borderSide:BorderSide(color: Colors.red) ),
-                            border: InputBorder.none,
-                            prefixIcon: IconButton(
-                              onPressed: (){},
-                              icon: Image.asset(AppIcons.emailIcon),),
-                            contentPadding: const EdgeInsets.only(top: 16.0),
-                            hintText: 'Enter Email',
-                            hintStyle: ralewayStyle.copyWith(
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.blueDarkColor.withOpacity(0.5),
-                              fontSize: 12.0,
-                            ),
-                          ),
-                        ),
-                      ),*/
                       SizedBox(height: height * 0.04),
                       Padding(
                         padding: const EdgeInsets.only(left: 16.0),
@@ -271,41 +210,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                     /* const SizedBox(height: 6.0),
-                      Container(
-                        height: 50.0,
-                        width: width,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16.0),
-                          color: AppColors.whiteColor,
-                        ),
-                        child: TextFormField(
-                          style: ralewayStyle.copyWith(
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.blueDarkColor,
-                            fontSize: 12.0,
-                          ),
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            suffixIcon: IconButton(
-                              onPressed: () {},
-                              icon: Image.asset(AppIcons.eyeIcon),
-                            ),
-                            prefixIcon: IconButton(
-                              onPressed: () {},
-                              icon: Image.asset(AppIcons.lockIcon),
-                            ),
-                            contentPadding: const EdgeInsets.only(top: 16.0),
-                            hintText: 'Enter Password',
-                            hintStyle: ralewayStyle.copyWith(
-                              fontWeight: FontWeight.w400,
-                              color: AppColors.blueDarkColor.withOpacity(0.5),
-                              fontSize: 12.0,
-                            ),
-                          ),
-                        ),
-                      ),*/
+
                       SizedBox(height: height * 0.025),
                               TextFormField(
                                 obscureText: !_showPassword,
