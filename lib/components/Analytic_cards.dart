@@ -6,8 +6,8 @@ class Analytic_cards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: AnalyticInfoGrid()
+    return  Container(
+      child: const AnalyticInfoGrid()
     );
   }
 }
@@ -17,10 +17,10 @@ class AnalyticInfoGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: 4,
-      gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,
         crossAxisSpacing: 16,
         mainAxisSpacing: 16,

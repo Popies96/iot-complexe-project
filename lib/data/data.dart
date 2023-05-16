@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:iot_project/Models/Analytic_info_model.dart';
+import 'package:iot_project/pages/home_screen.dart';
+
+
+
+// iterate over the list and print each element
+
 List analyticData = [
   AnalyticInfo(
     title: "Power consumption",
@@ -13,7 +19,7 @@ List analyticData = [
   ),
   AnalyticInfo(
     title: "Temperature",
-    count: '15°C',
+    count: "",
     color: Colors.pink,
   ),
   AnalyticInfo(
@@ -22,6 +28,7 @@ List analyticData = [
     color: Colors.blue,
   ),
 ];
+
 class Door {
   final String name;
   bool isOpen;

@@ -23,9 +23,10 @@ class WeatherCard extends StatelessWidget {
       future: info(),
       builder: (context, snapshot) {
         return Container(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
+
             gradient: LinearGradient(
               colors: [ Color.fromARGB(255, 31, 106, 217),Color.fromARGB(255, 45, 122, 237)],
               begin: Alignment.bottomCenter,
@@ -43,7 +44,7 @@ class WeatherCard extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 3,
               ),
               Text(
@@ -53,27 +54,27 @@ class WeatherCard extends StatelessWidget {
                   fontSize: 15,
                 ),
               ),
-              SizedBox(height: 10,),
-              // Image.network(
+              const SizedBox(height: 10,),
+              // /*Image.network(
               //   'https:${data?.icon}',
               //   fit: BoxFit.fill,
               //   width: 90,
-              // ),
+              // ),*/
               
               Text(
                 '${data?.condition}',
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 25,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Text(
                 '${data?.temp}°',
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 35,
                     fontWeight: FontWeight.w800),
@@ -89,7 +90,7 @@ class WeatherCard extends StatelessWidget {
                         width: 30,
                       ),
                       Text('${data?.wind} km/h',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                               color: Colors.white)),
@@ -107,7 +108,7 @@ class WeatherCard extends StatelessWidget {
                         width: 30,
                       ),
                       Text('${data?.humidity}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                               color: Colors.white)),
@@ -125,7 +126,7 @@ class WeatherCard extends StatelessWidget {
                         width: 30,
                       ),
                       Text('${data?.windDir}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                               color: Colors.white)),

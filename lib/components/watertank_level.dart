@@ -8,7 +8,7 @@ class waterTankCard extends StatelessWidget {
     return Container(
       height: 230,
       width: 510,
-      padding: EdgeInsets.symmetric(horizontal: 20,vertical: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -17,9 +17,9 @@ class waterTankCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
        
-        children: [
+        children: const [
           Padding(
-            padding: const EdgeInsets.only(bottom: 170),
+            padding:  EdgeInsets.only(bottom: 170),
             child: Text('Water tanks level',style: TextStyle(fontSize: 15,
             fontWeight: FontWeight.bold),),
           ),

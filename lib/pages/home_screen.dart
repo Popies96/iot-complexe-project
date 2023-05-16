@@ -1,16 +1,22 @@
+
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:iot_project/pages/dashBoard_screen.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:iot_project/pages/security_page.dart';
-
 import 'devices_pages.dart';
-
+import 'package:http/http.dart' as http;
+import 'package:iot_project/pages/config.dart';
+import 'package:iot_project/data/data.dart';
 class NavigationRailPage extends StatefulWidget {
-  const NavigationRailPage({Key? key}) : super(key: key);
-
+ final token;
+  const NavigationRailPage({@required this.token,Key? key}) : super(key: key);
+  
   @override
   State<NavigationRailPage> createState() => _NavigationRailPageState();
 }
   final List<Widget> _screens = [
+
     HomePage(),
     devicesPage(),
     securityPage()
@@ -45,7 +51,40 @@ const _navBarItems = [
 
 class _NavigationRailPageState extends State<NavigationRailPage> {
   int _selectedIndex = 0;
+  
+  late String username; 
+  /*Future<List<dynamic>> fetchTemp() async {
+    final response = await http.get(Uri.parse(Temp));
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
 
+  @override
+  void initState() {
+    super.initState();
+    fetchTemperatureData().then((data) {
+      setState(() {
+        for (var i = 0; i < data.length; i++) {
+          analyticData[2].count = data[i]['value'].toString();
+          // update the Temperature count with each received value
+        }
+      });
+    });
+  }*/
+
+
+  @override 
+  void initState() {
+    super.initState();
+    Map<String,dynamic> jwtDecodedToken = JwtDecoder.decode(widget.token);
+    username = jwtDecodedToken['username'];
+  }
+  
+
+  
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -60,6 +99,7 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
               indicatorColor: Color(0xff005BE0),
               leading: Column(
                 children: [
+
                   SizedBox(
                     height:25),
                   Container(
@@ -67,7 +107,7 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
                     width: 50,
                     child: Center(child: Image.asset('assets/images/smart-house.png', scale: 10,))
                   ),
-                  SizedBox(height: 16,)
+                  const SizedBox(height: 16,)
                 ],
               ),
               selectedIndex: _selectedIndex,

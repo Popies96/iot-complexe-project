@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iot_project/components/circular_slider/AC_card.dart';
 import 'package:iot_project/components/circular_slider/slider_widget.dart';
 import 'package:iot_project/components/customBar.dart';
-import 'package:iot_project/components/Analytic_cards.dart';
+import 'package:iot_project/components/poolingTest.dart';
 import 'package:iot_project/components/Barchart_Card.dart';
 import 'package:iot_project/components/line_chart.dart';
 import 'package:iot_project/components/watertank_level.dart';
@@ -11,20 +11,24 @@ import 'package:iot_project/components/weather_card.dart';
 import '../components/generalControl_card.dart';
 
 
+
 class HomePage extends StatelessWidget {
+  
   const HomePage({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-          color: Color.fromARGB(31, 164, 194, 224),
-          padding: EdgeInsets.all(8.0),
+          color:const  Color.fromARGB(31, 164, 194, 224),
+          padding: const EdgeInsets.all(8.0),
           child: ListView(scrollDirection: Axis.vertical, children: [
             Column(
               children: [
-                customBar(),
-                SizedBox(
+                const customBar(),
+                const SizedBox(
                   height: 16,
                 ),
                 Row(
@@ -35,50 +39,51 @@ class HomePage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Analytic_cards(),
-                          SizedBox(height: 16),
+                          const Analytic_cards(),
+                          const SizedBox(height: 16),
                           Row(
-                            children: [
+                            children: const [
                               barchartCard(),
                               SizedBox(width: 20,),
                               lineChartCard(),
                             ],
                           ),
-                          SizedBox(height: 16,),
+                          const SizedBox(height: 16,),
                           Row(
-                            children: [
+                            children: const [
                               waterTankCard(),
-                              SizedBox(width: 16,),
+                             SizedBox(width: 16,),
                               generalControl()
                             ],
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     ),
                     Expanded(
                         flex: 1,
                         child: Column(
                           children: [
-                            Container(
+                             // ignore: sized_box_for_whitespace
+                             Container(
                               height: 365,
                               width: double.infinity,
                               child: WeatherCard()
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 16,
                             ),
                             Container(
                               height: 330,
                               width: double.infinity,
-                              padding: EdgeInsets.all(8),
+                              padding: const EdgeInsets.all(8),
                               decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(20),
                               ),
-                              child: AcCard(),
+                              child:const  AcCard(),
                             )
                           ],
                         ))

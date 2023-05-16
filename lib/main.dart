@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         fontFamily:'Poppins'
         
       ),
-      home: const NavigationRailPage(),
+      home:  LoginScreen(),
     );
   }
 }
