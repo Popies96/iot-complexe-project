@@ -15,7 +15,7 @@ class _progressIndicatorState extends State<progressIndicator> {
             lineWidth: 10.0,
             percent: 0.4,
             center: Text("40%",style:TextStyle(fontSize: 30,fontWeight: FontWeight.normal)),
-            progressColor: Colors.blue,
+            progressColor: Color(0xff005BE0),
             backgroundColor: Colors.blue.shade100,
             circularStrokeCap: CircularStrokeCap.round,
           );

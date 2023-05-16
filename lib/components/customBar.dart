@@ -9,13 +9,13 @@ class customBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        SizedBox(child: Text('Dashboard',
+        SizedBox(child: Text('HPCS Dashboard',
         style: TextStyle(color: Colors.black.withOpacity(0.6),
         fontWeight: FontWeight.bold,
         fontSize: 30),
         
         ),),
-        SizedBox(width:720),
+        SizedBox(width:614),
         SizedBox(
           width: 350,
             child: TextField(

@@ -18,7 +18,7 @@ class customBar3 extends StatelessWidget {
                 fontSize: 30),
           ),
         ),
-        SizedBox(width: 759),
+        SizedBox(width: 746),
         SizedBox(
             width: 350,
             child: TextField(

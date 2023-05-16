@@ -39,7 +39,8 @@ class _SliderWidgetState extends State<SliderWidget> {
               height: kDiameter - 30,
               decoration: BoxDecoration(
                    gradient: LinearGradient(
-                    colors: [Colors.blue, Colors.lightBlueAccent],
+                    colors: [
+                      Color.fromARGB(255, 23, 109, 239), Color.fromARGB(255, 61, 138, 253)],
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
                     stops: [0.2, 0.4],
@@ -50,7 +51,7 @@ class _SliderWidgetState extends State<SliderWidget> {
                     BoxShadow(
                         blurRadius: 30,
                         spreadRadius: 10,
-                        color: Colors.blue.withAlpha(
+                        color: Color(0xff005BE0).withAlpha(
                             normalize(progressVal * 20000, 100, 255).toInt()),
                         offset: Offset(1, 3))
                   ]),

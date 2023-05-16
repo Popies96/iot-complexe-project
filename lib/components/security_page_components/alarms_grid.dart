@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'building_security_items.dart';
 
+// ignore: use_key_in_widget_constructors
 class SecurityGridView extends StatelessWidget {
   final List<Map<String, dynamic>> securityItems = [
     {
       "title": "Fire Alarm",
       "imagePlaceholder": "assets/images/fire-sensor.png",
-      "isSafe": false,
+      "isSafe": true,
     },
     {
       "title": "Motion detection",
@@ -32,8 +33,11 @@ class SecurityGridView extends StatelessWidget {
       padding: EdgeInsets.all(10),
       itemCount: securityItems.length,
       physics: NeverScrollableScrollPhysics(),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, childAspectRatio: 3,crossAxisSpacing: 16,mainAxisSpacing: 16),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 3,
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16),
       itemBuilder: (BuildContext context, int index) {
         return SecurityItem(
           title: securityItems[index]["title"],

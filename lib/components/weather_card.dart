@@ -27,7 +27,7 @@ class WeatherCard extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             gradient: LinearGradient(
-              colors: [Colors.blue, Colors.lightBlueAccent],
+              colors: [ Color.fromARGB(255, 31, 106, 217),Color.fromARGB(255, 45, 122, 237)],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
               stops: [0.2, 0.4],

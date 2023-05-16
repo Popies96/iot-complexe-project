@@ -57,6 +57,7 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
         children: <Widget>[
           if (!isSmallScreen)
             NavigationRail(
+              indicatorColor: Color(0xff005BE0),
               leading: Column(
                 children: [
                   SizedBox(
@@ -79,6 +80,7 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
               minExtendedWidth: 200,
               destinations: _navBarItems
                   .map((item) => NavigationRailDestination(
+                    indicatorColor: Color(0xff005BE0),
                       icon: item.icon,
                       selectedIcon: item.activeIcon,
                       label: Text(
