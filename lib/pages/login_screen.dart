@@ -116,20 +116,29 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             
                             TextSpan(
-                              text: ' Sign In ',
+
+                              text: ' Log In ',
                               style: ralewayStyle.copyWith(
                                 fontWeight: FontWeight.w800,
                                 color: AppColors.blueDarkColor,
-                                fontSize: 28.0,
+                                fontSize: 35.0,
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: height * 0.06),
-                    
 
-                      SizedBox(height: height * 0.04),
+
+                      SizedBox(height: height * 0.02),
+                      Text(
+                        'Enter your details to Log in \nto your account.',
+                        style: ralewayStyle.copyWith(
+                          fontSize: 12.0,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.textColor,
+                        ),
+                      ),
+                      SizedBox(height: height * 0.064),
                       Padding(
                         padding: const EdgeInsets.only(left: 16.0),
                         child: Text(

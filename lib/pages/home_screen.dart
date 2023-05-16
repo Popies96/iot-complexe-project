@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:iot_project/pages/dashBoard_screen.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:iot_project/pages/security_page.dart';
 import 'devices_pages.dart';
 import 'package:http/http.dart' as http;
 import 'package:iot_project/pages/config.dart';
@@ -15,8 +16,10 @@ class NavigationRailPage extends StatefulWidget {
   State<NavigationRailPage> createState() => _NavigationRailPageState();
 }
   final List<Widget> _screens = [
-    const HomePage(),
-    const devicesPage(),
+
+    HomePage(),
+    devicesPage(),
+    securityPage()
     ];
 const _navBarItems = [
   BottomNavigationBarItem(
@@ -29,11 +32,7 @@ const _navBarItems = [
     activeIcon: Icon(Icons.devices_rounded),
     label: 'Devices',
   ),
-  BottomNavigationBarItem(
-    icon: Icon(Icons.person_outline_rounded),
-    activeIcon: Icon(Icons.person_rounded),
-    label: 'Profile',
-  ),
+ 
    BottomNavigationBarItem(
     icon: Icon(Icons.security_outlined),
     activeIcon: Icon(Icons.security_rounded),
@@ -44,6 +43,10 @@ const _navBarItems = [
     activeIcon: Icon(Icons.settings),
     label: 'Settings',
   ),
+  BottomNavigationBarItem(icon: Icon(Icons.logout_outlined),
+  activeIcon: Icon(Icons.logout_rounded),
+  label: 'Log out'
+  )
 ];
 
 class _NavigationRailPageState extends State<NavigationRailPage> {
@@ -93,18 +96,16 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
         children: <Widget>[
           if (!isSmallScreen)
             NavigationRail(
+              indicatorColor: Color(0xff005BE0),
               leading: Column(
                 children: [
-                  const SizedBox(
-                    height:16),
-                    Text(username),
-                  Container (
-                    margin: const EdgeInsets.only(bottom: 10),
-                    child: const CircleAvatar(
-                      radius: 20,
-                      child: Icon(
-                        Icons.person),
-                        ),
+
+                  SizedBox(
+                    height:25),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    width: 50,
+                    child: Center(child: Image.asset('assets/images/smart-house.png', scale: 10,))
                   ),
                   const SizedBox(height: 16,)
                 ],
@@ -119,6 +120,7 @@ class _NavigationRailPageState extends State<NavigationRailPage> {
               minExtendedWidth: 200,
               destinations: _navBarItems
                   .map((item) => NavigationRailDestination(
+                    indicatorColor: Color(0xff005BE0),
                       icon: item.icon,
                       selectedIcon: item.activeIcon,
                       label: Text(

@@ -10,8 +10,8 @@ class generalControl extends StatefulWidget {
 
 List myDevices = [
   ['Lights', 'assets/images/idea.png', 'Controls', true],
-  ['Doors', 'assets/images/door-lock.png', 'Controls', true],
-  ['Cameras', 'assets/images/cctv.png', 'Controls', true],
+  ['Doors', 'assets/images/door-lock.png', 'Controls', false],
+  ['Cameras', 'assets/images/cctv.png', 'Controls', false],
   ['Routers', 'assets/images/wifi-router.png', 'Controls', true]
 ];
 

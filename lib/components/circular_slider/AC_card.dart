@@ -34,6 +34,7 @@ class _AcCardState extends State<AcCard> {
                 ),
                 Switch(
                     value: value,
+                    activeColor: Color(0xff005BE0),
                     onChanged: (newvalue) {
                       setState(() {
                         value = newvalue;
@@ -61,7 +62,7 @@ class _AcCardState extends State<AcCard> {
                         )
                       : Icon(
                           Icons.water_drop_rounded,
-                          color: Colors.blue,
+                          color: Color(0xff005BE0),
                         ),
                 ),
                 IconButton(
@@ -74,7 +75,7 @@ class _AcCardState extends State<AcCard> {
                   icon: 
                     !isSelected2
                         ? Icon(Icons.wb_sunny_outlined,color: Colors.grey,)
-                        : Icon(Icons.wb_sunny_rounded,color: Colors.blue,)
+                        : Icon(Icons.wb_sunny_rounded,color: Color(0xff005BE0),)
                   ),
            
                 IconButton(
@@ -87,7 +88,7 @@ class _AcCardState extends State<AcCard> {
                       ? Icon(Icons.wind_power_outlined, color: Colors.grey)
                       : Icon(
                           Icons.wind_power_rounded,
-                          color: Colors.blue,
+                          color: Color(0xff005BE0),
                         ),
                 ),
                 IconButton(
@@ -97,7 +98,7 @@ class _AcCardState extends State<AcCard> {
                     });
                   },
                   icon:
-                    !isSelected4 ?  Icon(Icons.snowing , color: Colors.grey): Icon(Icons.snowing, color: Colors.blue)
+                    !isSelected4 ?  Icon(Icons.snowing , color: Colors.grey): Icon(Icons.snowing, color: Color(0xff005BE0))
                   ),
                 
               ],

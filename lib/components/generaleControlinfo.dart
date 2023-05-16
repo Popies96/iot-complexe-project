@@ -20,7 +20,7 @@ class generaleControlInfo extends StatelessWidget {
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          color: Color.fromARGB(255, 68, 180, 255)),
+          color:powerOn ? Color(0xff005BE0) : Color.fromARGB(255, 93, 122, 142) ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
